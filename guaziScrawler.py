@@ -7,16 +7,14 @@ Created on Tue Oct 11 16:44:50 2016
 
 import requests
 from bs4 import BeautifulSoup
-import profile
 url = "http://www.guazi.com/bj/3000000001x.htm"
-import time
 
-def myPrint():
-    time.sleep(3)
-    print("Hello World")
 
 
 def geturl(url,file):
+    """
+    抓取瓜子二手车汽车网页的汽车前七张照片，然后保存到file里面。
+    """
     try:
         resp = requests.get(url).text
     except Exception as e:
@@ -34,14 +32,9 @@ def geturl(url,file):
         print(src,file=file)
 
 #现在图片地址都ok了，需要把最后@后面的参数去掉
-
-"""
-urls = "http://www.guazi.com/bj/{}x.htm".format(str(i) for i in range(3000000001,3000559801))
-with open("瓜子二手车图片数据.txt","w") as file:
-    for i in range(3000000001,3000001801):
-        url = "http://www.guazi.com/bj/" + str(i) + "x.htm"
-        geturl(url,file)
-
-with open("test.txt","w") as file:
-    profile.run("geturl(url,file)")
-"""
+if __name__ == "__main__":
+    #urls = "http://www.guazi.com/bj/{}x.htm".format(str(i) for i in range(3000000001,3000559801))
+    with open("瓜子二手车图片数据.txt","w") as file:
+        for i in range(3000000001,3000001801):
+            url = "http://www.guazi.com/bj/" + str(i) + "x.htm"
+            geturl(url,file)
